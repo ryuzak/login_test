@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<!-- BEGIN PAGE BASE CONTENT -->
+<!-- Header Dashboard -->
+{% block header %}Usuarios de la Agrícola{% endblock %}
+<!-- Breadcrum -->
+{% block breadcrumb %}Actualizar perfil{% endblock %}
+
+<!-- Custom CSS -->
+{% block css %}
+    <link href="{% static 'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+<!-- end Custom CSS -->
+
+{% block content %}
+<!-- BEGIN PAGE BASE CONTENT -->
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN VALIDATION STATES-->
+        <div class="portlet light portlet-fit portlet-form bordered" id="form_wizard_1">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class=" icon-user font-green"></i>
+                    <span class="caption-subject font-green sbold uppercase">Información del usuario</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <!-- BEGIN FORM-->
+                <form action="" class="form-horizontal" enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    <div class="form-body">
+                      {% if form.errors %}
+                        <div class="alert alert-danger">
+                          <button class="close" data-dismiss="alert"></button> 
+                          Tienes algunos errores. Favor de verificarlos.
+                        </div>                      
+                      {% endif %}
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.username.labe}}">{{form.first_name.label}} <span class="required">*</span></label>
+                            <div class="col-md-6">
+                                {{ form.first_name}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.username.labe}}">{{form.last_name.label}} <span class="required">*</span></label>
+                            <div class="col-md-6">
+                                {{ form.last_name}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.email.labe}}">{{form.email.label}} <span class="required">*</span></label>
+                            <div class="col-md-6">
+                               {{form.email}}
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="control-label col-md-3" for="{{personal_form.phone.label}}">{{form.phone.label}} <span class="required">*</span></label>
+                            <div class="col-md-4">
+                               {{form.phone}}
+                            </div>
+                        </div>                       
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{personal_form.user_type.label}}">{{form.user_type.label}}</label>
+                            <div class="col-md-6">
+                               {{form.user_type}}
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                          <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn green">Guardar</button>
+                                <a href="{% url 'accounts:account_list' %}" class="btn default">Cancelar</a>
+                            </div>
+                          </div>
+                       </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END VALIDATION STATES-->
+    </div>
+</div>
+<!-- END PAGE BASE CONTENT -->
+{% endblock %}
+
+<!-- Custom JS -->
+{% block js %}
+    <script src="{% static 'cust_buyer/js/validate.js' %}"></script>
+    <script src="{% static 'assets/global/scripts/validate.numeric.js' %}"</script>
+    <script src="{% static 'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js' %}" type="text/javascript"></script>
+{% endblock %}
+<!-- End Custom JS -->
+    
+<!-- Custom JS After App.js-->
+{% block js_script %}
+    <script src="{% static 'assets/pages/scripts/form-input-mask.js' %}" type="text/javascript"></script>
+{% endblock %}
+<!-- End Custom JS After App.js -->
+
+<!-- Document ready functions -->
+<!-- End document ready functions -->

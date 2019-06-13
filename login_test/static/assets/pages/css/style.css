@@ -1,0 +1,17 @@
+/* Custom CSS Styles 
+
+/* input error red border */
+.has-error{
+    border-color: #e73d4a !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+/* input warning yellow border */
+.has-warning{
+    border-color: #c29d0b !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+/* help-text-error */
+.help-block-error{  
+    color: #e73d4a !important;
+    font-size: 12px;
+}

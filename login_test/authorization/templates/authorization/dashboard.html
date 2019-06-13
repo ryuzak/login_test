@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-5 col-lg-5">
+		<!-- sección para datos del cliente -->
+		<div class="portlet box blue">
+		    <div class="portlet-title">
+		        <div class="caption">
+		            <i class="glyphicon glyphicon-user"></i>Agricola </div>
+		        <div class="tools">
+		            
+		        </div>
+		    </div>
+		    <div class="portlet-body">
+		        <h3>{{customer.name}}</h3>
+		        <br>
+		        <p>
+		        	Dirección: {{customer.street}} #{{customer.nostreet}},
+		        	{{customer.colony}}, {{customer.get_state_display}}, {{customer.get_country_display}}
+		        </p>
+		        <p>
+		        	Telefono: {{customer.phone}}
+		        </p>
+		        <p>
+		        	{% for card in cards %}
+		        		tarjeta {{forloop.counter}}: {{card}}<br>
+		        	{% endfor %}
+		        </p>
+		        <a href="{% url 'payments:pack_pay'%}" class="btn green">pagar</a>
+		        <a href="{% url 'customers:card_add'%}" class="btn green">agregar tarjeta</a>
+		    </div>
+		</div>
+	</div>
+	<div class="col-md-1 col-lg-1"></div>
+	<div class="col-md-5 col-lg-5">
+		<!-- sección para datos del usuario -->
+		<div class="portlet box blue">
+		    <div class="portlet-title">
+		        <div class="caption">
+		            <i class="glyphicon glyphicon-user"></i>Usuario </div>
+		        <div class="tools">
+		            
+		        </div>
+		    </div>
+		    <div class="portlet-body">
+		        <h3>{{user}}</h3>
+		        <br>
+		        <p>
+		        	Correo: {{user.email}}
+		        </p>
+		        <p>
+		        	Telefono: {{user.phone}}
+		        </p>
+
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	
+</div>
+{% endblock %}
