@@ -33,13 +33,9 @@ class RetreiveUpdateUserAPIView(APIView):
 
 	def put(self, request, *args, **kwargs):
 		serializer_data = request.data.get('user',{})
-
 		serializer = UserSerializer(request.user, data=serializer_data, partial=True)
 		serializer.is_valid(raise_exception=True)
 		serializer.save()
-		print('data 1',serializer_data)
-		print('data 2',serializer)
-
 		return Response(serializer.data, status=status.HTTP_200_OK)
 
 	def delete(self, request, *args, **kwargs):
