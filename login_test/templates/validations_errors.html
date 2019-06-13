@@ -1,7 +1,0 @@
- <!-- validacion de formulario de catalogos y genericos -->
-    {% for field in form %}
-        {% for error in field.errors %}
-	    		$("#{{field.auto_id}}").addClass('has-error');
-	            $("#{{field.auto_id}}").after("<span class='help-block-error'>{{error}}</span>");
-        {% endfor %}
-    {% endfor %}
